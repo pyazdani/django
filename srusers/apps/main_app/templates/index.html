@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head><title>SR Users</title>
+	</head>
+	<body>
+		{% for user in users %}
+		<legend>
+			<fieldset="Users">
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Created At</th>
+					<th>Actions</th>
+				</tr>
+				<tr>
+					<td>{{ user.first_name user.last_name }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.created_at }}</td>
+					<td><a href=<a href="{% url 'user' id={{user.id}} %}">Show</a>
+					<a href="{% url 'edit' id={{user.id}} %}">Edit</a>
+					<a href="{% url 'edit' id={{user.id}} %}">Edit</a></td>
+		{% endfor %}
+		<a href="{% url 'new' %}">Add a new user</a>
+	</body>
+</html>

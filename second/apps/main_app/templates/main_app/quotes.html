@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quotes Dashboard</title>
+    </head>
+    <body>
+    <h1>Welcome, {{ request.session.user.name }}!!</h1>
+    <a href="/session/delete"><button>Logout</button></a>
+
+    {% for quote in quotes %}
+    <fieldset>
+        <legend>Quotable Quotes</legend>
+        <p>{{ quote }}</p>
+    </fieldset>
+    {% endfor %}
+
+<!--     {% for favorite in favorites %}
+    <fieldset>
+        <legend>Your favorites</legend>
+        <p>{{ favorite }}</p>
+    </fieldset>
+    {% endfor %} -->
+
+    <fieldset>
+        <legend>Contribute a Quote</legend>
+        <form action='/quotes/add'  method="post">
+            {% csrf_token %}
+            <label for="author">Quoted By:</label>
+            <input type="text" name="author"">
+            
+            <label for="quote">Message(quote):</label>
+            <input type="text" name="message"">
+            <input type="submit" value="submit">
+        </form>
+    </fieldset>
+
+
+
+
+<!--         <h1>Hello, {{ request.session.user.name }}!!</h1>
+
+        <h3>Your Trip Schedules:</h3>
+        <table>
+            <thead>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+            </thead>
+        {% for trip in trips %}
+            <tr>
+                <td><a href="/travels/destination/{{trip.id }}">{{ trip.destination }}</a>
+                </td>
+                <td>{{ trip.start_date |date:"M d, Y" }}</td>
+                <td>{{ trip.end_date |date:"M d, Y"  }}</td>
+                <td>{{ trip.description }}</td>
+                <td><a href="/travels/leave/{{ trip.id }}">Leave</a></td>
+            </tr>
+        </table>
+        {% endfor %}
+        <br><br>
+        <a href="/travels/add">Add a Travel Plan</a>
+
+       
+        <h3>Other User's Travel Plans</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Do You Want to Join?</th>
+            </tr>
+        {% for all in all_trips %}
+            <tr>
+                <td>{{ all.users.first.name }}
+                <td><a href="/travels/destination/{{all.id }}">{{ all.destination }}</a>
+                </td>
+                <td>{{ all.start_date |date:"M d, Y" }}</td>
+                <td>{{ all.end_date |date:"M d, Y"  }}</td>
+                <td><a href="/travels/join/{{ all.id }}">join</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    <a href="/session/delete"><button>Logout</button></a> -->
+    </body>
+</html>

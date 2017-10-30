@@ -1,0 +1,36 @@
+.ilb{
+	display: inline-block;
+	width: 45%;
+	padding: 0;
+	margin: 20px;
+	display: inline-flex;
+}
+.first{
+	display: block;
+}
+.second{
+	display: block;
+
+}
+
+.red{
+	color: red;
+}
+
+.blue{
+	color: blue;
+}
+
+.green{
+	color: green;
+}
+.default{
+	color: black;
+}
+.on{
+	font-size: 32pt;
+}
+
+.off{
+	font-size: 16pt;
+}

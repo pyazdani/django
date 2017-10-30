@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quotes Dashboard</title>
+    </head>
+  <body>
+    <a href='/logout'>Logout</a>
+    <h1>Welcome, {{ request.session.name }}!</h1>
+    <fieldset>
+      <h3>Quotable Quotes</h3>
+      <table border="1">
+        {% if all_quotes %}
+          {% for quote in all_quotes %}
+        <tr>
+          <td>{{ quote.author }}</td>
+          <td>{{ quote.message }}</td>
+          <td><a href="quotes/fav/{{quote.id}}" class='button'>Add to My List</a></td>
+          <td>Posted by:{{ quote.users.name }}</td>
+        </tr>
+          {% endfor %}
+        {% endif %}
+      </table>
+      <h3>Your Favorites</h3>
+      <table border="1">
+        {% if quotes %}
+          {% for quote in quotes %}
+          <tr>
+            <td>{{ quote.author }}</td>
+            <td>{{ quote.message }}</td>
+            <td><a href="quotes/remove/{{quote.id}}"class="button">Remove from My List</a></td>
+            <td>Posted by:<a href=users/{{user.name}}>{{ quote.users.name }}</a></td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+      </table>
+  </fieldset>
+  <fieldset>
+    <h3>Contribute a Quote</h3>
+    <form action='/quotes/add' method='post'>
+      {% csrf_token %}
+      Quoted By: <input type='text' name='author' placeholder="Author"><br>
+      Message: <textarea name="message" rows='8' cols='20'></textarea><br>
+      <input type='submit' value='Submit'>
+    </form>
+  </fieldset>
+  </body>
+</html>

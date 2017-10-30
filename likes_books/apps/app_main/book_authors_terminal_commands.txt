@@ -1,0 +1,206 @@
+Book.objects.get(id=5).name="C#"
+
+In [4]: Book.objects.get(id=5)
+Out[4]: <Dojos object:Ruby Ruby Description 2017-10-21 16:56:20.770944+00:00 2017-10-21 16:56:20.770992+00:00>
+
+In [5]: c = Book.objects.get(id=5)
+
+In [6]: c.name = "C#"
+
+In [7]: c.save()
+
+In [8]: Book.objects.get(id=5)
+Out[8]: <Dojos object:C# Ruby Description 2017-10-21 16:56:20.770944+00:00 2017-10-21 17:03:57.253415+00:00>
+
+In [9]: f = Author.objects.get(id=5)
+
+In [10]: f.first_name = "Ketul"
+
+In [11]: f.save()
+
+In [12]: Author.objects.get(id=5)
+Out[12]: <Ninjas object:Ketul Jay Jay@gmail.com Notes  2017-10-21 16:59:19.592237+00:00 2017-10-21 17:04:47.111722+00:00 app_main.Book.None>
+
+In [13]: first = Author.objects.first
+
+In [14]: fbooks = Books.objects.get(id=1,2)
+  File "<ipython-input-14-5641e1da36df>", line 1
+    fbooks = Books.objects.get(id=1,2)
+SyntaxError: non-keyword arg after keyword arg
+
+
+In [15]: first = Author.objects.first
+
+
+In [17]: fbooks = Book.objects.first
+
+In [18]: print first
+<bound method Manager.first of <django.db.models.manager.Manager object at 0x104cad050>>
+
+In [19]: fbooks = Book.objects.first
+
+In [20]: first = Author.objects.first
+
+In [25]: this_book.authors.add(this_author)
+
+In [26]: print Book.objects.get(id=1)
+Book object
+
+In [27]: print this_book
+Book object
+
+In [28]: print this_author
+Author object
+
+In [29]: this_author = Author.objects.get(id=1)
+
+In [30]: print this_author
+Author object
+
+In [31]: this_author.books.all()
+Out[31]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>]>
+
+In [32]: this_book = Book.objects.get(id=2)
+
+In [33]: this_book.authors.add(this_author)
+
+In [34]: this_author.books.all()
+Out[34]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>]>
+
+In [35]: this_author = Author.objects.get(id=2)
+
+In [36]: this_book = Book.objects.get(id=1)
+
+In [37]: this_book.authors.add(this_author)
+
+In [38]: this_book = Book.objects.get(id=2)
+
+In [39]: this_book.authors.add(this_author)
+
+In [40]: this_book = Book.objects.get(id=3)
+
+In [41]: this_book.authors.add(this_author)
+
+In [42]: this_book.authors.all()
+Out[42]: <QuerySet [<Ninjas object:Speros Speros Speros@gmail.com Notes  2017-10-21 16:58:07.217426+00:00 2017-10-21 16:58:07.217476+00:00 app_main.Book.None>]>
+
+In [43]: this_author = Author.objects.get(id=3)
+
+In [44]: this_book = Book.objects.get(id=1)
+
+In [45]: this_author.books.add(this_book)
+
+In [46]: this_book = Book.objects.get(id=2)
+
+In [47]: this_author.books.add(this_book)
+
+In [48]: this_book = Book.objects.get(id=3)
+
+In [49]: this_author.books.add(this_book)
+
+In [50]: this_book = Book.objects.get(id=4)
+
+In [51]: this_author.books.add(this_book)
+
+In [52]: this_author.books.all()
+Out[52]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>, <Dojos object:Python Python Description 2017-10-21 16:55:46.754989+00:00 2017-10-21 16:55:46.755037+00:00>, <Dojos object:PHP PHP Description 2017-10-21 16:56:00.514774+00:00 2017-10-21 16:56:00.514824+00:00>]>
+
+In [53]: this_author = Author.objects.get(id=4)
+
+In [54]: this_book = Book.objects.get(id=1)
+
+In [55]: this_author.books.add(this_book)
+
+In [57]: this_book = Book.objects.get(id=2)
+
+In [58]: this_author.books.add(this_book)
+
+In [59]: this_book = Book.objects.get(id=3)
+
+In [60]: this_author.books.add(this_book)
+
+In [61]: this_book = Book.objects.get(id=4)
+
+In [62]: this_author.books.add(this_book)
+
+In [63]: this_book = Book.objects.get(id=5)
+
+In [64]: this_author.books.add(this_book)
+
+In [65]: this_author.books.all()
+Out[65]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>, <Dojos object:Python Python Description 2017-10-21 16:55:46.754989+00:00 2017-10-21 16:55:46.755037+00:00>, <Dojos object:PHP PHP Description 2017-10-21 16:56:00.514774+00:00 2017-10-21 16:56:00.514824+00:00>, <Dojos object:C# Ruby Description 2017-10-21 16:56:20.770944+00:00 2017-10-21 17:03:57.253415+00:00>]>
+
+In [66]: book3 = Book.objects.get(id=3)
+
+In [67]: book3.authors.all()
+Out[67]: <QuerySet [<Ninjas object:Speros Speros Speros@gmail.com Notes  2017-10-21 16:58:07.217426+00:00 2017-10-21 16:58:07.217476+00:00 app_main.Book.None>, <Ninjas object:John John John@gmail.com Notes  2017-10-21 16:58:38.904826+00:00 2017-10-21 16:58:38.904874+00:00 app_main.Book.None>, <Ninjas object:Jadee Jadee Jadee@gmail.com Notes  2017-10-21 16:59:01.296284+00:00 2017-10-21 16:59:01.296332+00:00 app_main.Book.None>]>
+
+In [68]: book3.authors.delete(id=1)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-68-a030949eb2e3> in <module>()
+----> 1 book3.authors.delete(id=1)
+
+AttributeError: 'ManyRelatedManager' object has no attribute 'delete'
+
+In [69]: book3.first_name.all()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-69-65e475c44c88> in <module>()
+----> 1 book3.first_name.all()
+
+AttributeError: 'Book' object has no attribute 'first_name'
+
+In [70]: book3.authors.first_name.all()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-70-5e937655cc45> in <module>()
+----> 1 book3.authors.first_name.all()
+
+AttributeError: 'ManyRelatedManager' object has no attribute 'first_name'
+
+In [71]: book3.authors.all()
+Out[71]: <QuerySet [<Ninjas object:Speros Speros Speros@gmail.com Notes  2017-10-21 16:58:07.217426+00:00 2017-10-21 16:58:07.217476+00:00 app_main.Book.None>, <Ninjas object:John John John@gmail.com Notes  2017-10-21 16:58:38.904826+00:00 2017-10-21 16:58:38.904874+00:00 app_main.Book.None>, <Ninjas object:Jadee Jadee Jadee@gmail.com Notes  2017-10-21 16:59:01.296284+00:00 2017-10-21 16:59:01.296332+00:00 app_main.Book.None>]>
+
+In [77]: this_book = Book.objects.get(id=2)
+
+In [78]: this_author = Author.objects.get(id=5)
+
+In [79]: this_book.authors.add(this_author)
+
+In [80]: this_book.authors.all()
+Out[80]: <QuerySet [<Ninjas object:Mike Mike Mike@gmail.com Notes  2017-10-21 16:57:49.457819+00:00 2017-10-21 16:57:49.457867+00:00 app_main.Book.None>, <Ninjas object:Speros Speros Speros@gmail.com Notes  2017-10-21 16:58:07.217426+00:00 2017-10-21 16:58:07.217476+00:00 app_main.Book.None>, <Ninjas object:John John John@gmail.com Notes  2017-10-21 16:58:38.904826+00:00 2017-10-21 16:58:38.904874+00:00 app_main.Book.None>, <Ninjas object:Jadee Jadee Jadee@gmail.com Notes  2017-10-21 16:59:01.296284+00:00 2017-10-21 16:59:01.296332+00:00 app_main.Book.None>, <Ninjas object:Ketul Jay Jay@gmail.com Notes  2017-10-21 16:59:19.592237+00:00 2017-10-21 17:04:47.111722+00:00 app_main.Book.None>]>
+
+In [81]: this_author = Author.objects.get(id=3)
+
+In [82]: this_author.books.all()
+Out[82]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>, <Dojos object:Python Python Description 2017-10-21 16:55:46.754989+00:00 2017-10-21 16:55:46.755037+00:00>, <Dojos object:PHP PHP Description 2017-10-21 16:56:00.514774+00:00 2017-10-21 16:56:00.514824+00:00>]>
+
+In [83]: this_author = Author.objects.get(id=2)
+
+In [84]: this_author.books.all()
+Out[84]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>]>
+
+In [6]: this_book = Book.objects.get(id=3)
+
+In [7]: this_author = Author.objects.get(id=1)
+
+In [8]: this_book.authors.remove(this_author)
+
+In [9]: this_book = Book.objects.get(id=2)
+
+In [10]: this_author = Author.objects.get(id=5)
+
+In [11]: this_book.authors.add(this_author)
+
+In [12]: this_author = Author.objects.get(id=5)
+
+In [14]: this_author.books.all()
+Out[14]: <QuerySet [<Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>]>
+
+In [15]: this_author = Author.objects.get(id=2)
+
+In [16]: this_author.books.all()
+Out[16]: <QuerySet [<Dojos object:C Sharp C Sharp Description 2017-10-21 16:54:41.562419+00:00 2017-10-21 16:54:41.562476+00:00>, <Dojos object:Java Java Description 2017-10-21 16:55:13.128179+00:00 2017-10-21 16:55:13.128227+00:00>]>
+
+In [17]: 

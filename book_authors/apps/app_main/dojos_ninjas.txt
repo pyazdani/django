@@ -1,0 +1,342 @@
+In [1]: Dojos.objects.all()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-230ac7c2310c> in <module>()
+----> 1 Dojos.objects.all()
+
+NameError: name 'Dojos' is not defined
+
+In [2]: from apps.app_main.models import Dojos, Ninjas
+
+In [3]: Dojos.objects.all()
+Out[3]: <QuerySet [<Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:06:48.992872+00:00 2017-10-20 16:06:48.992941+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:07:19.246348+00:00 2017-10-20 16:07:19.246395+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:07:21.541828+00:00 2017-10-20 16:07:21.541881+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:07:29.318535+00:00 2017-10-20 16:07:29.318587+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:08:04.501286+00:00 2017-10-20 16:08:04.501337+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:08:25.997007+00:00 2017-10-20 16:08:25.997064+00:00>, <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:09:19.085031+00:00 2017-10-20 16:09:19.085080+00:00>]>
+
+In [4]: Dojost.objects.get(id=2)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-4-d3bf45b4efe4> in <module>()
+----> 1 Dojost.objects.get(id=2)
+
+NameError: name 'Dojost' is not defined
+
+In [5]: Dojos.objects.get(id=2)
+Out[5]: <Dojos object:CodingDojo Silicon Valley Mountain View VA 2017-10-20 16:07:19.246348+00:00 2017-10-20 16:07:19.246395+00:00>
+
+In [6]: Dojos.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+Out[6]: <Dojos object:CodingDojo Seattle Seattle WA 2017-10-20 16:14:45.138605+00:00 2017-10-20 16:14:45.138657+00:00>
+
+In [7]: Dojos.objects.create(name="CodingDojo New York", city="New York", state="NY")
+Out[7]: <Dojos object:CodingDojo New York New York NY 2017-10-20 16:15:05.913847+00:00 2017-10-20 16:15:05.913895+00:00>
+
+In [8]: Dojos.objects.first().ninjas.all()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-8-b4c258cfa024> in <module>()
+----> 1 Dojos.objects.first().ninjas.all()
+
+AttributeError: 'Dojos' object has no attribute 'ninjas'
+
+In [9]: exit()
+Kavehs-MBP:dojo_ninjas kavskasaei$ python manage.py makemigrations
+Migrations for 'app_main':
+  apps/app_main/migrations/0001_initial.py
+    - Create model Dojos
+    - Create model Ninjas
+Kavehs-MBP:dojo_ninjas kavskasaei$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, app_main, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying app_main.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying sessions.0001_initial... OK
+Kavehs-MBP:dojo_ninjas kavskasaei$ python manage.py shell
+Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 12:01:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 5.5.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: from apps.app_main.models import Dojos, Ninjas
+
+In [2]: Dojos.objects.all()
+Out[2]: <QuerySet []>
+
+In [3]: Dojos.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+Out[3]: <Dojos object:CodingDojo Silicon Valley Mountain View CA 2017-10-20 16:25:13.716216+00:00 2017-10-20 16:25:13.716274+00:00>
+
+In [4]: Dojos.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+Out[4]: <Dojos object:CodingDojo Seattle Seattle WA 2017-10-20 16:25:35.683702+00:00 2017-10-20 16:25:35.683750+00:00>
+
+In [5]: Dojos.objects.create(name="CodingDojo New York", city="New York", state="NY")
+Out[5]: <Dojos object:CodingDojo New York New York NY 2017-10-20 16:25:52.170507+00:00 2017-10-20 16:25:52.170571+00:00>
+
+In [6]: Ninjas.objects.create(dojo_id=1, first_name="Parham", last_name="Yazdani)
+  File "<ipython-input-6-c8ce8b59ab9c>", line 1
+    Ninjas.objects.create(dojo_id=1, first_name="Parham", last_name="Yazdani)
+                                                                            ^
+SyntaxError: EOL while scanning string literal
+
+
+In [7]: Ninjas.objects.create(dojo_id=1, first_name="Parham", last_name="Yazdani")
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-7-a56fac60091f> in <module>()
+----> 1 Ninjas.objects.create(dojo_id=1, first_name="Parham", last_name="Yazdani")
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/manager.pyc in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in create(self, **kwargs)
+    390         and returning the created object.
+    391         """
+--> 392         obj = self.model(**kwargs)
+    393         self._for_write = True
+    394         obj.save(force_insert=True, using=self.db)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/base.pyc in __init__(self, *args, **kwargs)
+    552                 # checked) by the RelatedObjectDescriptor.
+    553                 if rel_obj is not _DEFERRED:
+--> 554                     _setattr(self, field.name, rel_obj)
+    555             else:
+    556                 if val is not _DEFERRED:
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/fields/related_descriptors.pyc in __set__(self, instance, value)
+    214                     instance._meta.object_name,
+    215                     self.field.name,
+--> 216                     self.field.remote_field.model._meta.object_name,
+    217                 )
+    218             )
+
+ValueError: Cannot assign "1": "Ninjas.dojo_id" must be a "Dojos" instance.
+
+In [8]: Ninjas.objects.create(dojo_id=Dojo.objects.get(id=1), first_name="Parham", last_name="Yazdani")
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-8-b53e7fc3d4ba> in <module>()
+----> 1 Ninjas.objects.create(dojo_id=Dojo.objects.get(id=1), first_name="Parham", last_name="Yazdani")
+
+NameError: name 'Dojo' is not defined
+
+In [9]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=1), first_name="Parham", last_name="Yazdani")
+Out[9]: <Ninjas object:Dojos object Parham Yazdani 2017-10-20 16:31:16.080209+00:00 2017-10-20 16:31:16.080252+00:00>
+
+In [10]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=2), first_name="Ricky", last_name="Rathbone")
+Out[10]: <Ninjas object:Dojos object Ricky Rathbone 2017-10-20 16:33:21.884073+00:00 2017-10-20 16:33:21.884116+00:00>
+
+In [11]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=3), first_name="Carlos", last_name="Rodgers")
+Out[11]: <Ninjas object:Dojos object Carlos Rodgers 2017-10-20 16:34:47.826982+00:00 2017-10-20 16:34:47.827022+00:00>
+
+In [12]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=1), first_name="Jane", last_name="Fonda")
+Out[12]: <Ninjas object:Dojos object Jane Fonda 2017-10-20 16:35:58.905172+00:00 2017-10-20 16:35:58.905211+00:00>
+
+In [13]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=1), first_name="Jane", last_name="Fonda")
+Out[13]: <Ninjas object:Dojos object Jane Fonda 2017-10-20 16:36:54.369199+00:00 2017-10-20 16:36:54.369242+00:00>
+
+In [14]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=2), first_name="Stevie", last_name="Wonder")
+Out[14]: <Ninjas object:Dojos object Stevie Wonder 2017-10-20 16:37:27.305963+00:00 2017-10-20 16:37:27.306030+00:00>
+
+In [15]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=2), first_name="Ray", last_name="Charles")
+Out[15]: <Ninjas object:Dojos object Ray Charles 2017-10-20 16:37:54.063931+00:00 2017-10-20 16:37:54.063975+00:00>
+
+In [16]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=3), first_name="Joe", last_name="Montana")
+Out[16]: <Ninjas object:Dojos object Joe Montana 2017-10-20 16:38:17.974903+00:00 2017-10-20 16:38:17.974942+00:00>
+
+In [17]: Ninjas.objects.create(dojo_id=Dojos.objects.get(id=3), first_name="General", last_name="Mills")
+Out[17]: <Ninjas object:Dojos object General Mills 2017-10-20 16:38:59.795748+00:00 2017-10-20 16:38:59.795788+00:00>
+
+In [18]: Ninjas.objects.get(dojo_id=Dojos.objects.get(id=1))
+---------------------------------------------------------------------------
+MultipleObjectsReturned                   Traceback (most recent call last)
+<ipython-input-18-ab71fecf9a7c> in <module>()
+----> 1 Ninjas.objects.get(dojo_id=Dojos.objects.get(id=1))
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/manager.pyc in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in get(self, *args, **kwargs)
+    382         raise self.model.MultipleObjectsReturned(
+    383             "get() returned more than one %s -- it returned %s!" %
+--> 384             (self.model._meta.object_name, num)
+    385         )
+    386 
+
+MultipleObjectsReturned: get() returned more than one Ninjas -- it returned 3!
+
+In [19]: Ninjas.objects.filter(dojo_id=Dojos.objects.get(id=1))
+Out[19]: <QuerySet [<Ninjas object:Dojos object Parham Yazdani 2017-10-20 16:31:16.080209+00:00 2017-10-20 16:31:16.080252+00:00>, <Ninjas object:Dojos object Jane Fonda 2017-10-20 16:35:58.905172+00:00 2017-10-20 16:35:58.905211+00:00>, <Ninjas object:Dojos object Jane Fonda 2017-10-20 16:36:54.369199+00:00 2017-10-20 16:36:54.369242+00:00>]>
+
+In [20]: Ninjas.objects.filter(dojo_id=Dojos.objects.filter.last)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-20-48ff2490ce47> in <module>()
+----> 1 Ninjas.objects.filter(dojo_id=Dojos.objects.filter.last)
+
+AttributeError: 'function' object has no attribute 'last'
+
+In [21]: Ninjas.objects.filter(dojo_id=Dojos.objects.last)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-21-18eb6bdbc46c> in <module>()
+----> 1 Ninjas.objects.filter(dojo_id=Dojos.objects.last)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/manager.pyc in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in filter(self, *args, **kwargs)
+    782         set.
+    783         """
+--> 784         return self._filter_or_exclude(False, *args, **kwargs)
+    785 
+    786     def exclude(self, *args, **kwargs):
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in _filter_or_exclude(self, negate, *args, **kwargs)
+    800             clone.query.add_q(~Q(*args, **kwargs))
+    801         else:
+--> 802             clone.query.add_q(Q(*args, **kwargs))
+    803         return clone
+    804 
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in add_q(self, q_object)
+   1248         existing_inner = set(
+   1249             (a for a in self.alias_map if self.alias_map[a].join_type == INNER))
+-> 1250         clause, _ = self._add_q(q_object, self.used_aliases)
+   1251         if clause:
+   1252             self.where.add(clause, AND)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in _add_q(self, q_object, used_aliases, branch_negated, current_negated, allow_joins, split_subq)
+   1274                     child, can_reuse=used_aliases, branch_negated=branch_negated,
+   1275                     current_negated=current_negated, connector=connector,
+-> 1276                     allow_joins=allow_joins, split_subq=split_subq,
+   1277                 )
+   1278                 joinpromoter.add_votes(needed_inner)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in build_filter(self, filter_expr, branch_negated, current_negated, can_reuse, connector, allow_joins, split_subq)
+   1204             else:
+   1205                 lhs = MultiColSource(alias, targets, sources, field)
+-> 1206             condition = lookup_class(lhs, value)
+   1207             lookup_type = lookup_class.lookup_name
+   1208         else:
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/lookups.pyc in __init__(self, lhs, rhs)
+     22     def __init__(self, lhs, rhs):
+     23         self.lhs, self.rhs = lhs, rhs
+---> 24         self.rhs = self.get_prep_lookup()
+     25         if hasattr(self.lhs, 'get_bilateral_transforms'):
+     26             bilateral_transforms = self.lhs.get_bilateral_transforms()
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/fields/related_lookups.pyc in get_prep_lookup(self)
+    110                 # as we don't get to the direct value branch otherwise.
+    111                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+--> 112                 self.rhs = target_field.get_prep_value(self.rhs)
+    113 
+    114         return super(RelatedLookupMixin, self).get_prep_lookup()
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/fields/__init__.pyc in get_prep_value(self, value)
+    964         if value is None:
+    965             return None
+--> 966         return int(value)
+    967 
+    968     def contribute_to_class(self, cls, name, **kwargs):
+
+TypeError: int() argument must be a string or a number, not 'instancemethod'
+
+In [22]: Ninjas.objects.filter(dojo_id=Dojos.objects.last)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-22-18eb6bdbc46c> in <module>()
+----> 1 Ninjas.objects.filter(dojo_id=Dojos.objects.last)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/manager.pyc in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in filter(self, *args, **kwargs)
+    782         set.
+    783         """
+--> 784         return self._filter_or_exclude(False, *args, **kwargs)
+    785 
+    786     def exclude(self, *args, **kwargs):
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/query.pyc in _filter_or_exclude(self, negate, *args, **kwargs)
+    800             clone.query.add_q(~Q(*args, **kwargs))
+    801         else:
+--> 802             clone.query.add_q(Q(*args, **kwargs))
+    803         return clone
+    804 
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in add_q(self, q_object)
+   1248         existing_inner = set(
+   1249             (a for a in self.alias_map if self.alias_map[a].join_type == INNER))
+-> 1250         clause, _ = self._add_q(q_object, self.used_aliases)
+   1251         if clause:
+   1252             self.where.add(clause, AND)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in _add_q(self, q_object, used_aliases, branch_negated, current_negated, allow_joins, split_subq)
+   1274                     child, can_reuse=used_aliases, branch_negated=branch_negated,
+   1275                     current_negated=current_negated, connector=connector,
+-> 1276                     allow_joins=allow_joins, split_subq=split_subq,
+   1277                 )
+   1278                 joinpromoter.add_votes(needed_inner)
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/sql/query.pyc in build_filter(self, filter_expr, branch_negated, current_negated, can_reuse, connector, allow_joins, split_subq)
+   1204             else:
+   1205                 lhs = MultiColSource(alias, targets, sources, field)
+-> 1206             condition = lookup_class(lhs, value)
+   1207             lookup_type = lookup_class.lookup_name
+   1208         else:
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/lookups.pyc in __init__(self, lhs, rhs)
+     22     def __init__(self, lhs, rhs):
+     23         self.lhs, self.rhs = lhs, rhs
+---> 24         self.rhs = self.get_prep_lookup()
+     25         if hasattr(self.lhs, 'get_bilateral_transforms'):
+     26             bilateral_transforms = self.lhs.get_bilateral_transforms()
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/fields/related_lookups.pyc in get_prep_lookup(self)
+    110                 # as we don't get to the direct value branch otherwise.
+    111                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+--> 112                 self.rhs = target_field.get_prep_value(self.rhs)
+    113 
+    114         return super(RelatedLookupMixin, self).get_prep_lookup()
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/db/models/fields/__init__.pyc in get_prep_value(self, value)
+    964         if value is None:
+    965             return None
+--> 966         return int(value)
+    967 
+    968     def contribute_to_class(self, cls, name, **kwargs):
+
+TypeError: int() argument must be a string or a number, not 'instancemethod'
+
+In [23]: Ninjas.objects.filter(dojo_id=Dojos.objects.last())
+Out[23]: <QuerySet [<Ninjas object:Dojos object Carlos Rodgers 2017-10-20 16:34:47.826982+00:00 2017-10-20 16:34:47.827022+00:00>, <Ninjas object:Dojos object Joe Montana 2017-10-20 16:38:17.974903+00:00 2017-10-20 16:38:17.974942+00:00>, <Ninjas object:Dojos object General Mills 2017-10-20 16:38:59.795748+00:00 2017-10-20 16:38:59.795788+00:00>]>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amadon</title>
+	<link rel="stylesheet" type="text/css" href="/static/app_main/style.css">
+</head>
+<body>
+	<div class="wrappera">
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Price</th>
+			<th>Actions</th>
+		</tr>
+		<tr>
+		{% for i in items %}
+		<td>{{ i.name }}</td>
+		<td>{{ i.price }}</td>
+		<td>
+			<form action='/buy' method='post'>
+  			{% csrf_token %}
+  			<select name='quantity'>
+     		<option>1</option>
+    		<option>2</option>
+    		<option>3</option>
+    		<option>4</option>
+  			</select>
+  			<input type='hidden' name='i_id' value='{{ i.id }}'/>
+  			<input type='submit' value='Buy!' />
+			</form>
+		</td>
+		</tr>
+		{% endfor %}
+		</table>	
+	</div>	
+</body>
+</html>

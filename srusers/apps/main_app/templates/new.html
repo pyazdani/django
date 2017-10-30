@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head><title>New User</title>
+	</head>
+	<body>
+		<fieldset>
+		<legend>Adda new user</legend>	
+		<form action="/users/new" method="post">
+			{% csrf_token %}
+			<input type="text" name="firstName" placeholder="First Name:">
+			<input type="text" name="lastName" placeholder="Last Name:">
+			<input type="text" name="email" placeholder="Email:">
+
+			<input type="submit" value="Create User">
+		</form>
+	</fieldset>
+	<a href="{% url 'index' %}">Go Back</a>

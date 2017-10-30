@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	<link rel="stylesheet" type="text/css" href="/static/app_main/style.css">
+</head>
+<body>
+	<div class="wrapperb">
+		<div class="green">Thanks for submitting this form! You have 
+		submitted this form {{ request.session.counter }} times now!
+		</div>
+	<div class="main">
+	<h3><u>Submitted Information:</u></h3>
+	<p>Name:    {{ request.session.name }}</p>
+	<p>Location:    {{ request.session.location }}</p>
+	<p>Favorite Language:    {{ request.session.language }}</p>
+	<p>Comments:    {{ request.session.message }}</p>
+
+		<form action="/home" method="post">
+			{% csrf_token %}
+			<input type="submit" value="Go Back">
+
+	</form>
+	</div>
+	</div>	
+</body>
+</html>

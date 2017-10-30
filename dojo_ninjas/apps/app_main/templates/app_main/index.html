@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	<link rel="stylesheet" type="text/css" href="/static/app_main/style.css">
+</head>
+<body>
+	<table cellspacing="5" border="0" cellpadding="0">
+	<tr valign="top" align="left">
+	<td width="500">
+		<h1>Add a Word</h1>
+		<form action="/create" method="post">
+			{% csrf_token %}
+			<input type="text" name="word">
+
+			<p><input type="radio" name="color" value="red">Red</p>
+			<p><input type="radio" name="color" value="green">Green</p>
+			<p><input type="radio" name="color" value="blue">Blue</p>
+
+			<p><input type="checkbox" name="font">Show in BIG FONTS!</p>
+
+			<input type="submit" value="Add to Session">
+
+		</form>
+	</td>
+<td width="5" bgcolor="#00FFFF"><BR></td>
+<td width="500" valign="top" align="left">
+	
+			<table>
+				{% for word in request.session.words %}
+					<tr>
+						<td>
+							<span class="{{word.color}} {{word.font}}">
+							{{word.word}}
+						</span>
+						- added on {{word.createdAt}}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<form action="/clear" method="post">
+				{%csrf_token%}
+				<input type="submit" value="Clear Session">
+			</form>
+			</td>
+		</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.wrappera{
+	width: 400px;
+    margin: 0 auto;
+    border: 3px solid black;
+    padding: 20px;
+}
+.wrapperb{
+	width: 600px;
+    margin: 0 auto;
+    border: 3px solid black;
+    padding: 20px;
+}
+.green{
+	border: 3px solid black;
+	width: 400px;
+    height: auto;
+	vertical-align: middle;
+	line-height: 20px; 
+	padding: 20px; 
+	background-color: green;
+}
+.main{
+	border: 3px solid black;
+	width: 500px;
+    height: auto;
+	vertical-align: middle;
+	line-height: 20px; 
+	padding: 20px;
+}

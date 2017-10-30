@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    </head>
+  <body>
+    <h1>Welcome!</h1>
+    <h3>Register</h3>
+    <form action='/user_register' method='post'>
+      {% csrf_token %}
+      Name: <input type="text" name='name' placeholder="Name"><br>
+      Alias: <input type="text" name='alias' placeholder="Username"><br>
+      Email: <input type="text" name='email' placeholder="Email"><br>
+      Password: <input type="password" name='password' placeholder="Password"><br>
+      Confirm Password: <input type="password" name='confirm_password' placeholder="Confirm Password"><br>
+      <p>*Password should be at least 8 characters long</p>
+      Date of Birth: <input type="date" name='dob' max="2007-07-28"><br>
+      <input type='submit' value="Register">
+    </form>
+    <h3>Login</h3>
+    <form action="/user_login" method="post">
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit" value="Login"><br>
+    </form>
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    <div>
+  </body>
+</html>

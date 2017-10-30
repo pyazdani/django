@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	<link rel="stylesheet" type="text/css" href="/static/app_main/style.css">
+</head>
+<body>
+	<div class="wrappera">
+	<form action="/process" method="post">
+		{% csrf_token %}
+		<p>Your Name:	<input type="text" name="name"></p>
+		<p>Location:	<select name="location">
+  						<option value="Washington_DC">Washington, D.C.</option>
+  						<option value="Seattle">Seattle</option>
+  						</select>
+  		</p>
+  		<p>Favorite Language:
+  					<select name="language">
+  					<option value="JavaScript">JavaScript</option>
+  					<option value="Python">Python</option>
+  					</select>
+  		</p>
+
+  		<p>Comments(optional):<br>
+  		<textarea name="message" rows="5" cols="30">write comment here.
+		</textarea>
+		</p>
+
+		<input type="submit" value="Submit">
+
+
+	</form>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	<link rel="stylesheet" type="text/css" href="/static/main_app/style.css">
+</head>
+<body>
+	<div class="wrapper">
+	<h1>Random Word (attempt #{{request.session.counter}})
+	<div class="box">{{ request.session.random }}</div>
+		<div class="button">
+			<form action="/random_word" method="post">
+			{%csrf_token%}
+			<input type="submit" value="Generate">
+			</form>
+			<form action="/reset" method="post">
+			{%csrf_token%}
+			<input type="submit" value="Reset">
+			</form>
+		
+	</div>
+</body>
+</html>
